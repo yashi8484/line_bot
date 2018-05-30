@@ -1,0 +1,25 @@
+{
+  "name": "line_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yashi8484/line_bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yashi8484/line_bot/issues"
+  },
+  "homepage": "https://github.com/yashi8484/line_bot#readme",
+  "dependencies": {
+    "@line/bot-sdk": "^6.0.2",
+    "express": "^4.16.3"
+  }
+}
