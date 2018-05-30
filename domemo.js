@@ -25,14 +25,17 @@ module.exports = class Domemo {
 
     // botのtileを選択する
     this.bot_tiles = this.distributeTiles(HAND_TILE_COUNT)
+    this.bot_tiles.sort((x, y) => x - y)
     // console.log(this.bot_tiles)
 
     // プレイヤーのtileを選択する
     this.player_tiles = this.distributeTiles(HAND_TILE_COUNT)
+    this.player_tiles.sort((x, y) => x - y)
     // console.log(this.player_tiles)
 
     // 場のtileを選択する
     this.field_tiles = this.distributeTiles(FIELD_TILE_COUNT)
+    this.field_tiles.sort((x, y) => x - y)
     // console.log(this.field_tiles)
 
     // 余り=除外
@@ -74,9 +77,29 @@ module.exports = class Domemo {
     return this.field_tiles
   }
 
-  // 当たり外れを判定する
+  // プレイヤーのtileから取り除く
+  // 取り除けた場合は、その数字を返す
+  // 取り除いたtileは、場札に移る
+  // 取り除けなかった場合は、-1を返す
+  removeFromPlayerTiles(num) {
+    let num_tile_index = this.player_tiles.indexOf(num)
+    if (num_tile_index < 0) {
+      return num_tile_index
+    }
+    this.field_tiles.push(this.player_tiles[num_tile_index])
+    this.player_tiles.splice(num_tile_index, 1)
+    this.field_tiles.sort((x, y) => x - y)
+    return num
+  }
 
   // プレイヤーに回答権があるかを判定する
 
   // ゲーム終了か判定する
+  isGameEnd() {
+    if (this.player_tiles.length <= 0) {
+      this.started = false
+      return true
+    }
+    return false
+  }
 }
