@@ -7,8 +7,8 @@ const Domemo = require('./domemo.js')
 const PORT = process.env.PORT || 3000;
 
 const config = {
-  channelAccessToken: 'fugafuga',
-  channelSecret: 'hogehoge'
+  channelAccessToken: process.env.LINE_CHANNEL_TOKEN,
+  channelSecret: process.env.LINE_CHANNEL_SECRET
 };
 
 const app = express();
